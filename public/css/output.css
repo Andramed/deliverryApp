@@ -585,31 +585,55 @@ video {
 }
 
 .cardContainer {
-  display: flex;
-  height: 100vh;
-  width: 60%;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  width: 75%;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  overflow-y: auto;
+  padding: 2rem;
 }
 
 .card {
-  height: 50%;
-  width: 50%;
-  border-radius: 1.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  border-radius: 1rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(217 249 157 / var(--tw-bg-opacity));
+}
+
+.cardFood {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.nameFood {
+  --tw-text-opacity: 1;
+  color: rgb(132 204 22 / var(--tw-text-opacity));
+}
+
+.description {
+  --tw-text-opacity: 1;
+  color: rgb(54 83 20 / var(--tw-text-opacity));
+}
+
+.btnOrder {
+  border-radius: 1rem;
+  --tw-bg-opacity: 1;
+  background-color: rgb(163 230 53 / var(--tw-bg-opacity));
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(247 254 231 / var(--tw-text-opacity));
 }
 
 .imgFood {
-  height: auto;
-  width: 14rem;
+  width: 58.333333%;
 }
 
 .dividePriceBtn {
-  margin-top: 1rem;
   display: flex;
-  gap: 8rem;
+  justify-content: space-between;
+  padding: 1rem;
 }
 
 .price {
@@ -651,12 +675,12 @@ video {
   width: 1.25rem;
 }
 
-.flex-col {
-  flex-direction: column;
+.w-full {
+  width: 100%;
 }
 
-.flex-wrap {
-  flex-wrap: wrap;
+.flex-col {
+  flex-direction: column;
 }
 
 .items-center {

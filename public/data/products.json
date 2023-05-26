@@ -77,6 +77,27 @@
 				"descriptions": "Pepperoni, mushroom, olives, green pepper, onion",
 				"price": "15,99",
 				"img": "https://debonairspizza.co.za/images/menu/2022/march/garlic-meaty-supreme_meat-pizza-menu-image-generic.webp"	
+			},
+			{
+				"id": "1",
+				"nameFood": "Chicken & Mushroom",
+				"descriptions": "Chicken, mushroom, diced tomato, onion, Debonairs sauce",
+				"price": "12,99",
+				"img": "https://debonairspizza.co.za/images/menu/2021/oct/pizzas/chicken-pizza-image.webp"	
+			},
+			{
+				"id": "2",
+				"nameFood": "Creamy Veg",
+				"descriptions": "Cream cheese base, onion, mushroom, sweet bell pepper, feta, mozzarella",
+				"price": "10,99",
+				"img": "https://debonairspizza.co.za/images/menu/2023/april/creamy-spinach-feta-pizza.webp"	
+			},
+			{
+				"id": "3",
+				"nameFood": "Four Seasons",
+				"descriptions": "Pepperoni, mushroom, olives, green pepper, onion",
+				"price": "15,99",
+				"img": "https://debonairspizza.co.za/images/menu/2022/march/garlic-meaty-supreme_meat-pizza-menu-image-generic.webp"	
 			}
 		]
 	},
