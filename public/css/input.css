@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	
+	.divRestaurant {
+		@apply flex bg-lime-200 items-center h-20 gap-3 rounded-3xl  justify-center
+	}
+	.logo {
+		@apply  w-1/6 
+	}
+	.listRestaurant {
+		@apply flex flex-col gap-8
+	}
+	.btnRestaurant {
+		@apply text-lime-950 text-3xl
+	}
+	.cardContainer{
+		@apply flex w-3/5 flex-wrap  h-screen justify-between items-center
+	}
+	.card {
+		@apply w-1/2 h-1/2  rounded-3xl  px-4 
+	}
+	
+	.imgFood {
+		@apply w-56 h-auto
+	}
+	.dividePriceBtn {
+		@apply flex gap-32 mt-4
+	}
+	.price {
+		@apply bg-lime-300 text-lg rounded-lg p-1 text-lime-50
+	}
+
+}
