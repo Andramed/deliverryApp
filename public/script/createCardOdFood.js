@@ -1,4 +1,4 @@
- export default class createCardOfFood {
+ class createCardOfFood {
 	constructor(nameFood, description, price, image, id, restaurantName){
 		this.nameFood = nameFood;
 		this.description = description;
@@ -12,7 +12,8 @@
 		let divWrapper = document.createElement('div');
 		divWrapper.classList.add(`cardFood${this.restaurantName}`, 'card')
 		let div = document.createElement('div');
-		div.classList = `cardFood`
+		div.classList = `cardFood`;
+		div.id = this.id
 		let img = document.createElement('img');
 		img.classList = 'imgFood'
 		img.src = this.image;
@@ -44,3 +45,24 @@
 }
 
 
+
+
+const giveProductsList = (selectedRestaurant, products, ) => {
+	const productContainer = document.querySelector('.cardContainer');
+	productContainer.innerHTML = '';
+	if (selectedRestaurant == null) {
+	  let selectedItems = products.products.dataKFC.items;
+	  for (let item of selectedItems) {
+		let newProduct = new createCardOfFood(item.nameFood, item.descriptions, item.price, item.img, item.id, 'KFC');
+		newProduct.createDiv(productContainer);
+	  }
+	} else {
+	  let selectedItems = products.products[`data${selectedRestaurant}`].items;
+	  for (let item of selectedItems) {
+		let newProduct = new createCardOfFood(item.nameFood, item.descriptions, item.price, item.img, item.id, selectedRestaurant);
+		newProduct.createDiv(productContainer);
+	  }
+	}
+  };
+
+  export{giveProductsList}

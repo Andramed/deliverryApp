@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start dev": "nodemon app.js",
+    "start dev": "nodemon app.js && npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css --watch",
     "start": "node app.js"
   },
   "author": "",
