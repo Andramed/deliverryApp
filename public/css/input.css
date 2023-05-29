@@ -46,6 +46,34 @@
 	.price {
 		@apply bg-lime-300 text-lg rounded-lg p-1 text-lime-50
 	} 
-	
-
+	.logo-restaurant-cart {
+		@apply w-10 h-10 mt-3
+	}
+	.containerCartRestaurant {
+		@apply flex gap-7 items-center 
+	}
+	.name-rest-cart {
+		@apply text-xl text-lime-600
+	}
+	.container-buyed-food{
+		@apply flex justify-between items-center p-5
+	}
+	.photo-food {
+		@apply w-20 h-20
+	}
+	.img-minus {
+		@apply h-10 w-10
+	}
+	.img-plus {
+		@apply h-10 w-10
+	}
+	.change-num-of-food {
+		@apply flex items-center gap-6
+	}
+	.num-of-food {
+		@apply text-xl
+	}
+	.delete-img {
+		@apply w-10 h-10
+	}
 }

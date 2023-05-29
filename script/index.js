@@ -2,6 +2,9 @@
 import products from '/data/products.json' assert {type: "json"}
 import {giveRestaurantList} from './createListRestaurant.js';
 import { giveProductsList } from './createCardOdFood.js';
+import postData from './postData.js';
+
+
 
 let selectedRestaurant = 'KFC';
 let oldRestaurant = 'KFC';
@@ -19,15 +22,25 @@ containerProduct.addEventListener('click', (event) => {
     let elementClicked = event.target.textContent
     if (elementClicked === 'order') {
         let parentId = Number(event.target.parentNode.parentNode.id);
+		let price = event.target.parentNode.querySelector('.price').textContent;
+		let nameFood = event.target.parentNode.parentNode.querySelector('.nameFood').textContent;
+		let img =event.target.parentNode.parentNode.querySelector('.imgFood').src;
         counterProductBuyed++
         numberOfBuyedProducts.textContent = counterProductBuyed;
         numberOfBuyedProducts.classList.remove('hidden'); 
-        let buyedItem = {
-          restaurant: selectedRestaurant,
-          idFood: parentId
-        }
-        listOfBuyedFood.push(buyedItem)
-        console.log(listOfBuyedFood);
+		listOfBuyedFood.push({
+			restaurant: selectedRestaurant,
+			id: parentId,
+			price: price,
+			nameFood: nameFood,
+			img: img
+		})
+		console.log(listOfBuyedFood);
+		postData('http://localhost:3000/', listOfBuyedFood)
+		.then((data) => {
+		  console.log(data); 
+		});
+	        
     }
 })
  
@@ -40,14 +53,15 @@ btnArray.forEach(button => {
           counterProductBuyed = 0
           numberOfBuyedProducts.textContent = counterProductBuyed;
           numberOfBuyedProducts.classList.add('hidden');
-          listOfBuyedFood = []
+		 listOfBuyedFood = []
+          
         }
   });
 });
 
 console.log(oldRestaurant, selectedRestaurant);
 
-export{listOfBuyedFood};
+
 
 
 

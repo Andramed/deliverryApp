@@ -2,7 +2,7 @@
 export default {
   content: 
 	[	"./views/**/*.{hbs,js}",
-		"./public/**/*.{js, html}"
+		"./script/**/*.js"
 	],
 	
  
