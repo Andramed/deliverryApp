@@ -7,6 +7,4 @@ export default class UserOrder {
 		this.adres = adres;
 		this.food = food;
 	}
-
-	
 }

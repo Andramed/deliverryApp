@@ -66,8 +66,8 @@
 		numOFFood.textContent = this.numOfBuyedProduct
 		numOFFood.classList.add('num-of-food');
 
-		let btnDeleteOrder = document.createElement('button');
-		btnDeleteOrder.classList.add('btn-delete-order');
+		// let btnDeleteOrder = document.createElement('button');
+		// btnDeleteOrder.classList.add('btn-delete-order');
 		let imgDelete = document.createElement('img');
 		imgDelete.src = 'https://www.svgrepo.com/show/511788/delete-1487.svg'
 		imgDelete.classList.add('delete-img');
@@ -81,10 +81,10 @@
 		divChangeNumOFFood.appendChild(numOFFood)
 		// divChangeNumOFFood.appendChild(btnMinus)
 		// divChangeNumOFFood.appendChild(btnPlus)
-		divChangeNumOFFood.appendChild(btnDeleteOrder)
+		divChangeNumOFFood.appendChild(imgDelete)
 		divChangeNumOFFood.appendChild(imgMinus)
 		divChangeNumOFFood.appendChild(imgPlus)
-		btnDeleteOrder.appendChild(imgDelete)
+		
 	}
 	
 }

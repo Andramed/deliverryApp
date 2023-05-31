@@ -35,10 +35,9 @@ containerProduct.addEventListener('click', (event) => {
 			nameFood: nameFood,
 			img: img
 		})
-		console.log(listOfBuyedFood);
 		putData('http://localhost:3000/', listOfBuyedFood)
 		.then((data) => {
-		  console.log(data); 
+		//   console.log(data); 
 		});
 	        
     }
@@ -57,15 +56,3 @@ btnArray.forEach(button => {
         }
   });
 });
-
-console.log(oldRestaurant, selectedRestaurant);
-
-
-
-
-
-
-
-
-
-

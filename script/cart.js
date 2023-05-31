@@ -4,8 +4,8 @@ import products from '/data/products.json' assert {type: "json"}
 import deleteData from './deleteData.js';
 import UserOrder from './userOrderInfo.js';
 import putData from './putData.js';
-putData
-UserOrder
+import postData from './psotDataOrder.js';
+
 let totalPrice = document.querySelector('.total-price');
 let buyedFood = document.querySelector('.list-of-buyed-food');
 let cartForm = document.querySelector('.cart-form');
@@ -25,29 +25,25 @@ let btnSubmit = document.querySelector('.submit')
 
 let restaurant = cartProducts[0]
 let logoRest = products.products[`data${restaurant.restaurant}`].logo;
+let newFoodOrder = []
 let food = ''
 let priceArray = []
 let idiuri = giveTheSameId(giveID(cartProducts));
-let counter = 1;
-let oldParentID = 0; 
-let currentParentID = 0; 
-console.log(Object.keys(idiuri).length);
 for (let prop in idiuri) {
-	  console.log(`aici este: idul ${prop} aici decite ori se repeta ${idiuri[prop]}`);
 	  let foodById = giveProductByID(prop, cartProducts);
 	  food = new createListOfBuyedFood(foodById.id, foodById.img, foodById.nameFood, foodById.restaurant, logoRest, idiuri[prop], foodById.price)
 	  food.createFoodCard();
 	  priceArray.push(food.giveTotalPrice())
   }
 food.createRestaurant()
-let newFoodOrder =  [];
 buyedFood.addEventListener('click', (event) => {
-	
 	let clickedElement = event.target.classList
 	if (clickedElement.value.includes('delete')) {
-		let parentId = event.target.parentNode.parentNode.parentNode.id
+		console.log(clickedElement);
+		let parentId = event.target.parentNode.parentNode.id
+		console.log(parentId);
 		newFoodOrder = cartProducts.filter((food) => food.id != parentId);
-		console.log(newFoodOrder);
+		console.log(newFoodOrder, 'new food order');
 		deleteData('http://localhost:3000/cart', newFoodOrder)
 			.then((data) => {
 			  console.log(data); 
@@ -107,7 +103,6 @@ for (let i = 0; i < Object.keys(buyedFood.children).length; i++) {
   }
   
   const total = Math.round((Object.values(prices).reduce((acc, curr) => acc + curr, 0))* 100) / 100 ;
-  console.log('Total:', total);
   totalPrice.textContent = `total price: ${total}`; // Actualizează cu `total` în loc de `price`
   
   const observer = new MutationObserver((mutations) => {
@@ -131,7 +126,11 @@ for (let i = 0; i < Object.keys(buyedFood.children).length; i++) {
 
 
 btnSubmit.addEventListener('click', () => {
-	event.preventDefault();
-	let newOrder = new UserOrder(email.value, firstName.value, lastName.value, phone.value, adress.value, newFoodOrder);
+	// event.preventDefault();
+	let newOrder = new UserOrder(email.value, firstName.value, lastName.value, phone.value, adress.value, cartProducts);
 	console.log(newOrder);
+	postData('http://localhost:3000/cart', newOrder)
+		.then((data) => {
+		  console.log(data); 
+	});
 })

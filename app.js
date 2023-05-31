@@ -27,10 +27,14 @@ app.get('/', (req, res) => {
 app.get('/cart', (req, res) => {
     res.render('cart');
 });
+app.get('/deliveryPayments', (req, res) => {
+	res.render('deliveryPayments')
+})
 
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.put('/', (req, res) => {
   // Accesează datele trimise de pe client
@@ -61,7 +65,7 @@ app.delete('/cart', (req, res) => {
 
   
 
-  app.use(bodyParser.urlencoded({ extended: true }));
+  
   
   app.put('/cart', (req, res) => {
 	// Accesează datele trimise de pe client
@@ -71,6 +75,20 @@ app.delete('/cart', (req, res) => {
 		  console.log("data up dated in josn file");
 	  } catch (error) {
 		  console.error(`Erorr to up to date json file: ${error}`);
+	  }
+		res.send(data)
+  
+  //   res.send('Date primite și procesate cu succes');
+  });
+
+  app.post('/cart', (req, res) => {
+	// Accesează datele trimise de pe client
+	const data = req.body;
+	  try {
+		  fs.writeFileSync(path.join(__dirname, 'public', 'data', 'orderInfo.json'), JSON.stringify(data));
+		  console.log("Order added");
+	  } catch (error) {
+		  console.error(`Erorr to add order info in json file: ${error}`);
 	  }
 		res.send(data)
   
