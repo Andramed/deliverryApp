@@ -2,8 +2,27 @@ import  { giveID, giveTheSameId, createListOfBuyedFood, giveProductByID } from '
 import cartProducts from '/data/cart.json' assert {type: "json"}
 import products from '/data/products.json' assert {type: "json"}
 import deleteData from './deleteData.js';
+import UserOrder from './userOrderInfo.js';
+import putData from './putData.js';
+putData
+UserOrder
 let totalPrice = document.querySelector('.total-price');
 let buyedFood = document.querySelector('.list-of-buyed-food');
+let cartForm = document.querySelector('.cart-form');
+let email = cartForm.childNodes[1].childNodes[1];
+let firstName = cartForm.childNodes[3].childNodes[1].childNodes[1];
+let lastName = cartForm.childNodes[3].childNodes[3].childNodes[1];
+let phone = cartForm.childNodes[5].childNodes[1].childNodes[1];
+let adress = cartForm.childNodes[5].childNodes[3].childNodes[1];
+let btnSubmit = document.querySelector('.submit')
+
+
+
+
+
+
+
+
 let restaurant = cartProducts[0]
 let logoRest = products.products[`data${restaurant.restaurant}`].logo;
 let food = ''
@@ -35,34 +54,44 @@ buyedFood.addEventListener('click', (event) => {
 		})
 		location.reload()	
 	} else if (clickedElement.value.includes('plus')) {
-		let parentId = event.target.parentNode.parentNode.parentNode.id;
-		oldParentID = currentParentID; 
-		currentParentID = parentId; 	
-		if (oldParentID != currentParentID) {
-			counter = 1
+		let price = event.target.parentNode.parentNode.querySelector('.price')
+		let numOfOrder = event.target.parentNode.querySelector('.num-of-food');
+		let	counter = Number(numOfOrder.textContent);
+		counter ++
+		price.textContent = (Number(price.id) * counter);
+		numOfOrder.textContent = counter
+		console.log(cartProducts);
+		let parentId = event.target.parentNode.parentNode.id
+		let index = cartProducts.findIndex(item => item.id == parentId);
+		console.log(cartProducts);
+		if (index != -1) {
+			cartProducts.push(cartProducts[index])
 		}
-		counter++
-		let price = event.target.parentNode.parentNode.parentNode.querySelector('.price')
-		let initialValue = Number(price.id)
-		let numOfFood = event.target.parentNode.parentNode.querySelector('.num-of-food')
-		let currentValuePrice = Math.round((initialValue * counter)* 100) / 100
-		price.textContent = currentValuePrice
-		numOfFood.textContent = counter
+		
+		putData('http://localhost:3000/cart', cartProducts)
+		.then((data) => {
+		  console.log(data); 
+		});
 		
 	} else if (clickedElement.value.includes('minus')) {
-		let parentId = event.target.parentNode.parentNode.parentNode.id;
-		oldParentID = currentParentID; 
-		currentParentID = parentId; 	
-		if (oldParentID != currentParentID) {
-			counter = 1
+		let price = event.target.parentNode.parentNode.querySelector('.price')
+		let numOfOrder = event.target.parentNode.querySelector('.num-of-food');
+		let	counter = Number(numOfOrder.textContent);
+		counter --
+		price.textContent = (Number(price.id) * counter);
+		numOfOrder.textContent = counter
+		console.log(cartProducts);
+		let parentId = event.target.parentNode.parentNode.id
+		let index = cartProducts.findIndex(item => item.id == parentId);
+		console.log(cartProducts);
+		if (index != -1) {
+			cartProducts.splice(index, 1)
 		}
-		counter--
-		let price = event.target.parentNode.parentNode.parentNode.querySelector('.price')
-		let initialValue = Number(price.id)
-		let numOfFood = event.target.parentNode.parentNode.querySelector('.num-of-food')
-		let currentValuePrice = Math.round((initialValue * counter)* 100) / 100
-		price.textContent = currentValuePrice
-		numOfFood.textContent = counter
+		console.log(cartProducts);
+		putData('http://localhost:3000/cart', cartProducts)
+		.then((data) => {
+		  console.log(data); 
+		});
 	}
 })
 
@@ -79,7 +108,8 @@ for (let i = 0; i < Object.keys(buyedFood.children).length; i++) {
   
   const total = Math.round((Object.values(prices).reduce((acc, curr) => acc + curr, 0))* 100) / 100 ;
   console.log('Total:', total);
-  totalPrice.textContent = total
+  totalPrice.textContent = `total price: ${total}`; // Actualizează cu `total` în loc de `price`
+  
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       if (mutation.type === 'characterData' || mutation.type === 'childList') {
@@ -90,14 +120,18 @@ for (let i = 0; i < Object.keys(buyedFood.children).length; i++) {
         
         const total = Math.round((Object.values(prices).reduce((acc, curr) => acc + curr, 0))* 100) / 100 ;
         console.log('Total:', total);
-		totalPrice.textContent = total
+        totalPrice.textContent = `total price: ${total}`; // Actualizează cu `total` în loc de `price`
       }
     });
   });
 
   const options = { characterData: true, childList: true, subtree: true };
   observer.observe(targetElement, options);
-
 }
 
-console.log(prices);
+
+btnSubmit.addEventListener('click', () => {
+	event.preventDefault();
+	let newOrder = new UserOrder(email.value, firstName.value, lastName.value, phone.value, adress.value, newFoodOrder);
+	console.log(newOrder);
+})

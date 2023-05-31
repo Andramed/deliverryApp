@@ -2,7 +2,7 @@
 import products from '/data/products.json' assert {type: "json"}
 import {giveRestaurantList} from './createListRestaurant.js';
 import { giveProductsList } from './createCardOdFood.js';
-import postData from './postData.js';
+import putData from './putData.js';
 
 
 
@@ -36,7 +36,7 @@ containerProduct.addEventListener('click', (event) => {
 			img: img
 		})
 		console.log(listOfBuyedFood);
-		postData('http://localhost:3000/', listOfBuyedFood)
+		putData('http://localhost:3000/', listOfBuyedFood)
 		.then((data) => {
 		  console.log(data); 
 		});
@@ -54,7 +54,6 @@ btnArray.forEach(button => {
           numberOfBuyedProducts.textContent = counterProductBuyed;
           numberOfBuyedProducts.classList.add('hidden');
 		 listOfBuyedFood = []
-          
         }
   });
 });

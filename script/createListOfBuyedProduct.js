@@ -49,14 +49,14 @@
 		let divChangeNumOFFood = document.createElement('div');
 		divChangeNumOFFood.classList.add('change-num-of-food');
 
-		let btnMinus = document.createElement('button')
-		btnMinus.classList.add('minus-food');
+		// let btnMinus = document.createElement('button')
+		// btnMinus.classList.add('minus-food');
 		let imgMinus = document.createElement('img');
 		imgMinus.classList.add('img-minus');
 		imgMinus.src = 'https://www.svgrepo.com/show/155829/minus.svg'
 		
-		let btnPlus = document.createElement('button');
-		btnPlus.classList.add('plus-food');
+		// let btnPlus = document.createElement('button');
+		// btnPlus.classList.add('plus-food');
 		let imgPlus = document.createElement('img');
 		imgPlus.classList.add('img-plus');
 		imgPlus.src = 'https://www.svgrepo.com/show/513660/circle-plus.svg'
@@ -79,11 +79,11 @@
 		div.appendChild(divChangeNumOFFood);
 		
 		divChangeNumOFFood.appendChild(numOFFood)
-		divChangeNumOFFood.appendChild(btnMinus)
-		divChangeNumOFFood.appendChild(btnPlus)
+		// divChangeNumOFFood.appendChild(btnMinus)
+		// divChangeNumOFFood.appendChild(btnPlus)
 		divChangeNumOFFood.appendChild(btnDeleteOrder)
-		btnMinus.appendChild(imgMinus)
-		btnPlus.appendChild(imgPlus)
+		divChangeNumOFFood.appendChild(imgMinus)
+		divChangeNumOFFood.appendChild(imgPlus)
 		btnDeleteOrder.appendChild(imgDelete)
 	}
 	
