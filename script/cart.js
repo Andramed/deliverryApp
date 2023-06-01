@@ -32,7 +32,7 @@ let idiuri = giveTheSameId(giveID(cartProducts));
 for (let prop in idiuri) {
 	  let foodById = giveProductByID(prop, cartProducts);
 	  food = new createListOfBuyedFood(foodById.id, foodById.img, foodById.nameFood, foodById.restaurant, logoRest, idiuri[prop], foodById.price)
-	  food.createFoodCard();
+	  food.createFoodCard('.list-of-buyed-food');
 	  priceArray.push(food.giveTotalPrice())
   }
 food.createRestaurant()
@@ -123,11 +123,34 @@ for (let i = 0; i < Object.keys(buyedFood.children).length; i++) {
   const options = { characterData: true, childList: true, subtree: true };
   observer.observe(targetElement, options);
 }
+console.log();
 
+let infoFoods = document.querySelectorAll('.container-buyed-food')
+const orderedInfo = [];
+
+for (const food of infoFoods) {
+  const item = {};
+
+  for (const element of food.childNodes) {
+    if (element.classList && element.classList.contains('photo-food')) {
+      item.img = element.src;
+    }
+    if (element.classList && element.classList.contains('price')) {
+      item.price = element.textContent;
+    }
+    if (element.classList && element.classList.contains('name-food')) {
+      item.nameFood = element.textContent;
+    }
+  }
+
+  orderedInfo.push(item);
+}
+
+console.log(orderedInfo);
 
 btnSubmit.addEventListener('click', () => {
 	// event.preventDefault();
-	let newOrder = new UserOrder(email.value, firstName.value, lastName.value, phone.value, adress.value, cartProducts);
+	let newOrder = new UserOrder(email.value, firstName.value, lastName.value, phone.value, adress.value, orderedInfo);
 	console.log(newOrder);
 	postData('http://localhost:3000/cart', newOrder)
 		.then((data) => {

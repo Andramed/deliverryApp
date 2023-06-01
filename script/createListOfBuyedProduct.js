@@ -30,7 +30,7 @@
 		div.appendChild(span);
 	}
 	
-	createFoodCard () {
+	createFoodCard (elementToAppend) {
 		let div = document.createElement('div');
 		div.classList.add('container-buyed-food');
 		div.id = this.id;
@@ -72,7 +72,7 @@
 		imgDelete.src = 'https://www.svgrepo.com/show/511788/delete-1487.svg'
 		imgDelete.classList.add('delete-img');
 
-		document.querySelector('.list-of-buyed-food').appendChild(div);
+		document.querySelector(elementToAppend).appendChild(div);
 		div.appendChild(imgFood);
 		div.appendChild(nameFood);
 		div.appendChild(price);
