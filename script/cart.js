@@ -44,7 +44,7 @@ buyedFood.addEventListener('click', (event) => {
 		console.log(parentId);
 		newFoodOrder = cartProducts.filter((food) => food.id != parentId);
 		console.log(newFoodOrder, 'new food order');
-		deleteData('http://localhost:3000/cart', newFoodOrder)
+		deleteData('https://delivery-app-o0zf.onrender.com/cart', newFoodOrder)
 			.then((data) => {
 			  console.log(data); 
 		})
@@ -64,7 +64,7 @@ buyedFood.addEventListener('click', (event) => {
 			cartProducts.push(cartProducts[index])
 		}
 		
-		putData('http://localhost:3000/cart', cartProducts)
+		putData('https://delivery-app-o0zf.onrender.com/cart', cartProducts)
 		.then((data) => {
 		  console.log(data); 
 		});
@@ -84,7 +84,7 @@ buyedFood.addEventListener('click', (event) => {
 			cartProducts.splice(index, 1)
 		}
 		console.log(cartProducts);
-		putData('http://localhost:3000/cart', cartProducts)
+		putData('https://delivery-app-o0zf.onrender.com/cart', cartProducts)
 		.then((data) => {
 		  console.log(data); 
 		});
@@ -152,7 +152,7 @@ btnSubmit.addEventListener('click', () => {
 	// event.preventDefault();
 	let newOrder = new UserOrder(email.value, firstName.value, lastName.value, phone.value, adress.value, orderedInfo);
 	console.log(newOrder);
-	postData('http://localhost:3000/cart', newOrder)
+	postData('https://delivery-app-o0zf.onrender.com/cart', newOrder)
 		.then((data) => {
 		  console.log(data); 
 	});

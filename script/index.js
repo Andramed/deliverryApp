@@ -35,7 +35,7 @@ containerProduct.addEventListener('click', (event) => {
 			nameFood: nameFood,
 			img: img
 		})
-		putData('http://localhost:3000/', listOfBuyedFood)
+		putData('https://delivery-app-o0zf.onrender.com/', listOfBuyedFood)
 		.then((data) => {
 		//   console.log(data); 
 		});
