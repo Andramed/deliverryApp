@@ -12,7 +12,7 @@
 	
     
 	
-	"generate": "robocopy  ./generated /E",
+	"generate": "robocopy ./public ./generated /E",
   "build": "npm run generate && babel src -d dist"
   },
   "author": "",
