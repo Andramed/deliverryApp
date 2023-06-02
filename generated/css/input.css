@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	
+	.divRestaurant {
+		@apply flex bg-lime-200 items-center h-20 gap-3 rounded-3xl  justify-center
+	}
+	.logo {
+		@apply  w-1/6 
+	}
+	.listRestaurant {
+		@apply flex flex-col gap-8
+	}
+	.btnRestaurant {
+		@apply text-lime-950 text-3xl 
+	}
+	.cardContainer {
+		@apply w-3/4 grid grid-cols-3 p-8 overflow-y-auto  gap-5
+	}
+	.card{
+		@apply bg-lime-200 rounded-2xl
+	}
+	.cardFood{
+		@apply flex justify-between flex-col h-full
+	}
+	.nameFood {
+		@apply text-lime-500 
+	}
+	.description{
+		@apply text-lime-900
+	}
+	.btnOrder {
+		@apply bg-lime-400 text-lime-50 px-5 rounded-2xl
+	}
+
+	
+	.imgFood {
+		@apply w-7/12 
+	}
+	
+	.dividePriceBtn {
+		@apply flex  justify-between p-4
+	}
+	.price {
+		@apply bg-lime-300 text-lg rounded-lg p-1 text-lime-50
+	} 
+	.logo-restaurant-cart {
+		@apply w-10 h-10 mt-3
+	}
+	.containerCartRestaurant {
+		@apply flex gap-7 items-center 
+	}
+	.name-rest-cart {
+		@apply text-xl text-lime-600
+	}
+	.container-buyed-food{
+		@apply flex justify-between items-center p-5
+	}
+	.photo-food {
+		@apply w-20 h-20
+	}
+	.img-minus {
+		@apply h-10 w-10
+	}
+	.img-plus {
+		@apply h-10 w-10
+	}
+	.change-num-of-food {
+		@apply flex items-center gap-6
+	}
+	.num-of-food {
+		@apply text-xl
+	}
+	.delete-img {
+		@apply w-10 h-10
+	}
+}

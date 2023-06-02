@@ -9,8 +9,11 @@
     "start dev": "nodemon app.js && npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css --watch",
     "start": "node app.js",
     
-	"generate": "cp -R ./public ./generated && babel src -d dist",
-    "build": "npm run generate && mv ./generated ./dist"
+	
+    
+	
+	"generate": "robocopy  ./generated /E",
+  "build": "npm run generate && babel src -d dist"
   },
   "author": "",
   "license": "ISC",
